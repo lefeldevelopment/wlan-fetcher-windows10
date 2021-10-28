@@ -26,14 +26,14 @@ def get_wlan_passwords() -> "list[dict]":
     wlan_list = []
     
     # looping through all wlan profiles
-    for ssid in re.findall("All User Profile     : (.*)\r",
+    for ssid in re.findall("All User Profile     : (.*)\r", #EDIT HERE IF REQUIRED
                            _run_process(["netsh", "wlan", "show", "profiles"])):
         # checking if profile contains a key
-        if not re.search("Security key           : Absent",
-                         _run_process(["netsh", "wlan", "show", "profile", ssid])):
+        if not re.search("Security key           : Absent", #EDIT HERE IF REQUIRED
+                         _run_process(["netsh", "wlan", "show", "profile", f"'{ssid}'"])):
             # making key visible with key=clear
-            password = re.search("Key Content            : (.*)\r", _run_process(
-                ["netsh", "wlan", "show", "profile", ssid, "key=clear"]))
+            password = re.search("Key Content            : (.*)\r", #EDIT HERE IF REQUIRED
+                                 _run_process(["netsh", "wlan", "show", "profile", f"'{ssid}'", "key=clear"]))
             # adding profile to wlan_list if a password could be found
             if password:
                 wlan_list.append({"ssid": ssid, "key": password[1]})
