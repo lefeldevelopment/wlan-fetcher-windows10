@@ -1,4 +1,4 @@
-# wlan fetcher windows10
+# Wlan Fetcher Windows10
 
 ## Description
 A simple python-function, to gain all wlan passwords from stored wlan-profiles on a computer.
@@ -21,4 +21,5 @@ To fix this, manually run the commands and change the output to your language.
 1. ``netsh wlan show profiles``
 2. ``netsh wlan show profile NAME``
 3. ``netsh wlan show profile NAME key=clear``
+
 The strings that must be edited are marked with a comment.
